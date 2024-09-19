@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>New Song Form</h1>
+<div id="new-song">
+    <form method="POST">
+        {{ form.hidden_tag() }} <!-- Render CSRF token and other hidden fields -->
+    
+        <div>
+            {{ form.title.label }} <!-- Render the label for the 'title' field -->
+            {{ form.title(size=40) }} <!-- Render the input field for 'title' -->
+            {% for error in form.title.errors %} <!-- Display form validation errors -->
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+    
+        <div>
+            {{ form.artist.label }} <!-- Render the label for the 'artist' field -->
+            {{ form.artist(size=40) }} <!-- Render the input field for 'artist' -->
+            {% for error in form.artist.errors %} <!-- Display form validation errors -->
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+    
+        <div>
+            <input type="submit" value="Add Song">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
